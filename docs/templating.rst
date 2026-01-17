@@ -6,9 +6,7 @@ a different template engine, but you still have to install Jinja to run
 Flask itself.  This requirement is necessary to enable rich extensions.
 An extension can depend on Jinja being present.
 
-
 Note: Flask's template rendering behavior is explained in more detail in the official Jinja documentation linked below.
-
 
 This section only gives a very quick introduction into how Jinja
 is integrated into Flask.  If you want information on the template
@@ -33,7 +31,6 @@ Flask sets up Jinja with some default behavior to keep templates safe and easy t
 
 - Flask also adds a few helpful global utilities to the Jinja context so they can be
   used directly in templates without extra setup.
-
 
 Standard Context
 ----------------
@@ -71,6 +68,7 @@ by default:
    The request-bound object for global variables (:data:`flask.g`).  This
    variable is unavailable if the template was rendered without an active
    request context.
+
 Using `url_for` in Templates
 ----------------------------
 
@@ -97,7 +95,6 @@ This will render to:
     /user/alice
 
 Using `url_for` is recommended over hard-coded links such as `/user/alice`, because it keeps the routing logic and template usage consistent and reduces the potential for broken links within the application.
-
 
 Using `url_for` for Static Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -143,7 +140,6 @@ This ensures that static file references remain valid even when configured to se
    .. sourcecode:: jinja
 
       {% from '_helpers.html' import my_macro with context %}
-
 
 Controlling Autoescaping
 ------------------------
@@ -232,12 +228,11 @@ For template tests, use the :meth:`~.Flask.template_test` decorator or
 method.
 
 The same methods also exist on :class:`.Blueprint`, prefixed with ``app_`` to
-indicate that the registered functions will be avaialble to all templates, not
+indicate that the registered functions will be available to all templates, not
 only when rendering from within the blueprint.
 
 The Jinja environment is also available as :attr:`~.Flask.jinja_env`. It may be
 modified directly, as you would when using Jinja outside Flask.
-
 
 Context Processors
 ------------------
@@ -257,7 +252,6 @@ Example: Injecting a User Object
     @app.context_processor
     def inject_user():
         return dict(user=g.user)
-
 
 The context processor above makes a variable called `user` available in
 the template with the value of `g.user`.  This example is not very
@@ -300,7 +294,6 @@ Streaming can be helpful in scenarios such as:
 - improving initial page load times by sending HTML chunks as they are ready
 - reducing memory usage when working with very large templates
 
-
 Streaming Templates
 ^^^^^^^^^^^^^^^^^^^
 
@@ -312,7 +305,6 @@ Flask exposes helpers to simplify streamed rendering:
 
 - :func:`~flask.stream_template` — streams a template file.
 - :func:`~flask.stream_template_string` — streams a template given as a string.
-
 
 .. code-block:: python
 
